@@ -110,3 +110,10 @@ elif output == v:
     print("double your money")
 else:
     print("you lost")
+
+#strings
+phone = input("enter your phone number: ")
+print(f"your phone number is {phone}")
+
+phone_number = "+251/00/987/87/87" #phone number
+print(phone_number.replace("/","-"))
