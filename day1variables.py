@@ -3,6 +3,7 @@
 
 import math
 import random
+import re
 
 age = 25
 
@@ -28,6 +29,7 @@ is_logged_in = True
 print(f"is online: {is_online}")
 print(f"game running: {game_running}")
 print(f"is logged in: {is_logged_in}")
+
 
 if not is_online:
     print(f"{name} is offline")
@@ -117,3 +119,70 @@ print(f"your phone number is {phone}")
 
 phone_number = "+251/00/987/87/87" #phone number
 print(phone_number.replace("/","-"))
+
+
+phone_n = "+49 (176) 123-4567"
+print(phone_n.replace("+","").replace("(","").replace(")","").replace("-","").replace(" ",""))
+
+
+#using REGEX
+phone_x = "+49 (176) 123-4567"
+
+cleaned =re.sub(r"[+\s()\-]","",phone_x)
+result =(f"00{cleaned}")
+print(result)
+
+csv_file = "Tesfaye,25,tesfaye@gmail.com"
+print(csv_file.split(","))
+name,age,email = csv_file.split(",")
+print(name)
+print(age)
+print(email)
+
+
+#transformation
+print("=" * 30)
+
+
+
+#indexing and slicing
+
+luck = "Tesfaye Dejene"
+print (luck[0])
+print (luck[1])
+print (luck[2])
+print(luck[0:4])
+print(luck[:4])
+print(luck[4:])
+print(luck[::2])#prints every other character
+print(luck[::-1])#reverses the string
+
+print(luck.upper())
+print(luck.lower())
+print(luck.split(" "))
+
+print(luck[0:8:2])
+
+#whitespace cleaning
+message = "   hello world!   "
+print(message.strip())
+print(message.lstrip())
+print(message.rstrip())
+
+
+import re
+
+pack = "968-Maria, ( D@t@ Engineer );; 27y..".strip()
+
+# Extract parts
+name = re.search(r"-(\w+)", pack).group(1).lower()          # Maria → maria
+role = re.search(r"\(\s*(.*?)\s*\)", pack).group(1)          # D@t@ Engineer
+role = re.sub(r"[^a-zA-Z\s]", "", role).lower().strip()      # data engineer
+age  = re.search(r"(\d+)y", pack).group(1)                   # 27
+
+# Final format
+result = f"name: {name} | role: {role} | age:{age}"
+print(result)
+
+
+
